@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container_item1">
+        </div>
+        <div class="container_LogIn">
+            <div class="LogIn">
+                <p class="font600 size35" style="margin-bottom: 20px;">LOGIN</p>
+                <p class="font400 size24" style="margin-bottom: 10px;">New to vuestic? <span style="color: blue;">Sign up</span></p>
+                <p class="font400 size16" style="color: blue;">EMAIL</p>
+                <input class="textbox" id="TK" >
+                <div class="item" id="item_tk">
+                    TK sai
+                </div>
+                <p class="font400 size16" style="color: blue;">PASSWORD</p>
+                <input class="textbox" id="MK" >
+                <div class="item" id="item_mk">
+                    MK sai
+                </div>
+                <div class="box font400 size16" style="margin-bottom: 10px">
+                    <div>
+                        <i class="fa-regular fa-square"></i>
+                        <span>Keep me signed in on this device</span>
+                    </div>
+                    <p style="color: blue;">Forgot password?</p>
+                </div>
+                <button onclick="myFunction()"id="bt">LOGIN</button>
+            </div>
+            <script>
+                function myFunction()
+                {
+                    var TK= document.getElementById("TK").value;
+                    var MK= document.getElementById("MK").value; 
+                    var x=localStorage.getItem("TK"+TK);
+                    var y=localStorage.getItem(TK)
+                    console.log(TK);
+                    console.log(MK);
+                    if(TK != x)
+                    {
+                        var temp1=document.getElementById("item_tk");
+                        temp1.style.opacity=1;
+                    }
+                    if(TK == x)
+                    {
+                        if(MK != y)
+                        {
+                            var temp2=document.getElementById("item_mk");
+                            temp2.style.opacity=1;
+                        }
+                    }
+                    if(TK == x && MK == y)
+                    {
+                        window.location.href="index.html";
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>

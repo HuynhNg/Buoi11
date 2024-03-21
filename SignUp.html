@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./SignUp.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container_item1"> 
+        </div>
+        <div class="container_SignUp">
+            <div class="SignUp">
+                <p class="font600 size35" style="margin-bottom: 20px;">SIGN UP</p>
+                <p class="font400 size24" style="margin-bottom: 10px;">Have an account? <span style="color: blue;" onclick="Login">Login</span></p>
+                <p class="font400 size16" style="color: blue;">EMAIL</p>
+                <input class="textbox" id="TK" >
+                <div class="item" id="item_tk">
+                    TK sai cu phap
+                </div>
+                <p class="font400 size16" style="color: blue;">PASSWORD</p>
+                <input class="textbox" id="MK" >
+                <p class="font400 size16" style="opacity: 0.5;">Password should be 8+ characters: letters, numbers, and special characters.</p>
+                <div class="item" id="item_mk">
+                    MK ko an toan
+                </div>
+                <p class="font400 size16" style="color: blue;">REPEAT PASSWORD</p>
+                <input class="textbox" id="MK2" >
+                <div class="item" id="item_mk2">
+                    MK khac
+                </div>
+                <button onclick="myFunction()"id="bt">SIGN UP</button>
+            </div>
+            <script>
+                function myFunction()
+                {
+                    const regexTK=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                    const regexMK= /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+                    var TK= document.getElementById("TK").value;
+                    var MK= document.getElementById("MK").value;
+                    var MK2= document.getElementById("MK2").value;
+                    console.log(!regexTK.test(TK))
+                    if(!regexTK.test(TK))
+                    {
+                        let tk=document.getElementById("item_tk");
+                        tk.style.opacity=1;
+                    }
+                    else
+                    {
+                        if(!regexMK.test(MK) || MK.length < 8)
+                        {
+                            let mk=document.getElementById("item_mk");
+                            mk.style.opacity=1;
+                        }
+                        else{
+                            if(MK == MK2)
+                            {
+                                localStorage.setItem("TK"+TK,TK);
+                                localStorage.setItem(TK,MK);
+                                window.location.href="Login.html";
+                            }
+                            else{
+                                let mk=document.getElementById("item_mk2");
+                                mk.style.opacity=1;
+                            }
+                        }
+                    }
+                }
+                function Login()
+                {
+                    window.location.href="Login.html";
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
